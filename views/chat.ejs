@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="input">
+    <button onclick="send()">send</button>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    function send(a) {
+        let name = document.querySelector("#input").value;
+        console.log(name);
+        const socket = io();
+        socket.emit('userConnected', name);
+
+        socket.on('userEntered', (username) => {
+            console.log(`${username} entered the chat room`);
+            const pElement = document.createElement("p");
+            pElement.textContent = `${username} entered the chat room`;
+            document.body.appendChild(pElement);
+        });
+
+        socket.on('userLeft', (username) => {
+            const pElement = document.createElement("p");
+            pElement.textContent = `${username} left the chat room`;
+            document.body.appendChild(pElement);
+        });
+
+    }
+</script>
+
+</html>

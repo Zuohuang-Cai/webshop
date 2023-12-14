@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('webshop:server');
 var http = require('http');
+let initWebSocket = require('./websocketmanage.js');
+
 
 /**
  * Get port from environment and store in Express.
@@ -20,12 +22,12 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+initWebSocket(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
-server.listen(port);
+const HOSt = "20.230.7.144"
+server.listen(port,HOSt);
 server.on('error', onError);
 server.on('listening', onListening);
 

@@ -1,16 +1,11 @@
 var express = require('express');
-let path = require('path')
 let mysql = require('mysql');
 var router = express.Router();
-let WinkelwagenInfo = require(path.join(__dirname + '/../public/json/winkelwagen.json'));
-let product = require(path.join(__dirname + '/../public/json/product.json'));
-let UserJson = require(path.join(__dirname + '/../public/json/user.json'));
-let fs = require('fs');
-let Winkelwagen = WinkelwagenInfo.userid1.totalproduct;
-const filePath = path.join(__dirname, '../public/json/winkelwagen.json');
 const pool = require("../bin/database.js");
-
+const io = require('../bin/websocketmanage.js');
+const { render } = require('../app.js');
 /* GET home page. */
+
 router.get('/', function (req, res, next) {
   pool.getConnection((err, connection) => {
     connection.query("SELECT * FROM products", [req.body.username], (err, rows) => {
@@ -21,6 +16,12 @@ router.get('/', function (req, res, next) {
     });
   });
 });
+
+router.get('/chat', function (req, res, next) {
+  res.render("chat");
+});
+
+
 // add product
 router.get('/add/:id/:afzet', (req, res, next) => {
   pool.getConnection((err, connection) => {
@@ -106,4 +107,7 @@ function gettime() {
   let formattedDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
   return formattedDate + ' ' + formattedTime;
 }
+
+
+
 module.exports = router;
