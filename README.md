@@ -1,8 +1,3 @@
-# eindopdracht
-
-voor de eind moet ik een webshop bouwen met database,in de webshop moet admin page hebben, en de admin moet kunnen crud zonder te programeren.
-
-
 ## pages
 
 - homepage
@@ -19,17 +14,9 @@ voor de eind moet ik een webshop bouwen met database,in de webshop moet admin pa
 - html
 - express
 - ejs
--mysql
+- mysql
 
 
-## differend than old shop
-
-- user can buy more items in one time, and the value wil store in localstorage.
-- clear code.
-- Data is rendered by the server.
-- admin can backups self with the Backup button.
-- more flexibility
--with mysql
 
 ## Installation
 
@@ -46,7 +33,7 @@ After downloading, you can start the project with the command  ``` npm start```
 
 ## Author
 
-- [@aloeloe1](https://github.com/aloeloe1)
+- [@zuohuang-cai](https://github.com/zuohuang-cai)
 
 ## adminpage
-you can go to the admin page if you type in /admin after the domain
+you can go to the admin page if you type in /admin after the domain, the username and password are both bit_academy.
